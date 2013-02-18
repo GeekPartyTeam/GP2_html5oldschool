@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Geekparty 2 html5 game</title>
+
+  <script src='auxilary/GameLoopManager.js'></script>
+  <script src='auxilary/vec2.js'></script>
+  <script src='auxilary/buzz.js'></script>
+  <script src='game.js'></script>
+  <script src='main.js'></script>
+
+  <style>
+    #screen { display:block; margin:0 auto; background-color:#F0F; }
+      
+    .fpsmeter {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        text-align: center;
+    }
+    .fpsmeter p {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+  </style>
+</head>
+<body>
+  <canvas id='screen' width='800' height='600' "></canvas>
+  <div id="fpscontainer"></div>
+</body>
+</html>
