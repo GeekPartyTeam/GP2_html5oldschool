@@ -9,12 +9,14 @@ Game = function () {
 
 Game.prototype.Load = function () {
 
+
+
+    // load sound
+    this.SoundJump = new buzz.sound("/res/jump.ogg");
+    this.SoundJump.play();
+
     // load ambient sound / music and play it
     this.SoundAmbient = new buzz.sound("/res/sound.ogg");
-    this.SoundAmbient.loop().play();
-
-    // play sound
-    this.SoundJump = new buzz.sound("/res/jump.mp3");
 
     // load image
     this.imageObj = new Image();
@@ -34,9 +36,12 @@ Game.prototype.Render = function () {
 
 // mouse input
 Game.prototype.onmousedown = function (e) {
+
+    // get pos from event e
     this.pos.x = e.layerX;
     this.pos.y = e.layerY;
 
+    // play sound
     this.SoundJump.stop();
     this.SoundJump.play();
 
@@ -48,6 +53,8 @@ Game.prototype.onmouseup = function (e) {
 
 // keyboard input
 Game.prototype.onkeydown = function (e) {
+
+    // e.whitch contains charcode of pressed key
 
     // left
     if (e.which == 37) this.pos.x -= 10;

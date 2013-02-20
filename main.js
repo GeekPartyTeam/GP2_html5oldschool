@@ -1,5 +1,7 @@
 // ----------------------------------------
-// Actual game code goes here.
+// main.js - entry point of program
+// Sets up game loop and all calls to game.js where actual game code goes
+//-----------------------------------------
 
 // Global vars
 fps = null; 
@@ -21,18 +23,18 @@ function GameTick(elapsed)
 
     fps.update(elapsed);
 
+    // all game calculations here
     game.Calculate();
 
-   ctx.setTransform(1, 0, 0, 1, 0, 0);
+    // reset transformation matrix to indentity
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+
    	// Clear the screen
 	ctx.fillStyle = "cyan";
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // main render
+    // game render
     game.Render();
-
-    // reset transformation matrix to indentity
-    ctx.setTransform(1, 0, 0, 1,0, 0);
 
     // Draw FPS
 	ctx.fillStyle = "#FF00AA";    
