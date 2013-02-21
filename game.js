@@ -12,26 +12,34 @@ Game.prototype.Load = function () {
 
 
     // load sound
-    this.SoundJump = new buzz.sound("/res/jump.ogg");
+    this.SoundJump = new buzz.sound("res/jump.ogg");
     this.SoundJump.play();
 
     // load ambient sound / music and play it
-    this.SoundAmbient = new buzz.sound("/res/sound.ogg");
+    this.SoundAmbient = new buzz.sound("res/sound.ogg");
+    this.SoundAmbient.loop().play();
 
     // load image
     this.imageObj = new Image();
     this.imageObj.src = 'res/creature.png';
 
     this.pos = new Vec2(canvas.width / 2, canvas.height / 2);
+
+    this.hero = new Sprite({
+        "baseUrl"  : "res/hero/"
+        , "fps"    : 12
+        , "frames" : ["hero_01.png", "hero_02.png", "hero_03.png","hero_04.png", "hero_05.png", "hero_06.png"]
+    });
 }
 
 Game.prototype.Calculate = function () {
-
-
+    this.hero.update(tickperframe);
 }
 
 Game.prototype.Render = function () {
     ctx.drawImage(this.imageObj, 0,0,128,128 , this.pos.x, this.pos.y,128,128);
+
+    this.hero.draw(ctx,100,100);
 }
 
 // mouse input
