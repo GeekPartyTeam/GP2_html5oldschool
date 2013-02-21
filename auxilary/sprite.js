@@ -1,21 +1,16 @@
+// ----------------------------------------
+// sprite.js - very simple sprite class. 
+// You can modify it for your needs
+//-----------------------------------------
+
+
 Sprite = function( config )
 {
-
     this.initialize(config);
 }
 
-var p = Sprite.prototype = {};
-
-p.initialize = function(config)
+Sprite.prototype.initialize = function(config)
 {
-
-    /*
-     var spriteConfig = {
-     "baseUrl"  : "img/hero/"
-     , "fps"    : 12
-     , "frames" : ["wd_0.png", "wd_1.png", "wd_2.png"]
-     };
-     */
 
     this.frames = [];
     this.valid  = false;
@@ -45,26 +40,18 @@ p.initialize = function(config)
 }
 
 
-
-p.setFrame = function (frameNum)
-{
-    this.currentFrame = this.frames[frameNum];
-}
-
-
-p.update = function(dt)
+Sprite.prototype.update = function(dt)
 {
     if (!this.valid) return;
 
     this.timer += dt;
 
     var frame = Math.floor( this.timer / (1000/this.fps) ) % this.frames.length;
-    this.setFrame(frame);
+    this.currentFrame=this.frames[frame];
 }
 
-p.draw = function(ctx, x, y)
-{
+Sprite.prototype.draw = function (x, y, w, h) {
     if (!this.valid) return;
-
-    ctx.drawImage( this.currentFrame, x,y);
+    if(arguments.length==2)   ctx.drawImage(this.currentFrame, x, y);
+    else   ctx.drawImage(this.currentFrame, x, y, w, h);
 }

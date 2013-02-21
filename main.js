@@ -8,20 +8,24 @@ fps = null;
 canvas = null;
 ctx = null;
 
+var game = null;
+
+// number of miliseconds in current frame
+var tickperframe = 0;
+// number of seconds in current frame, choose what is best for your needs
+var secperframe = 0;
+
 
 // ----------------------------------------
-
-game = null;
-
-var tickperframe = 0;
 
 
 
 function GameTick(elapsed)
 {
+    secperframe = elapsed;
     tickperframe = elapsed*1000;
 
-    fps.update(elapsed);
+    fps.update(secperframe);
 
     // all game calculations here
     game.Calculate();
@@ -52,9 +56,6 @@ window.onload = function () {
 
     ctx = canvas.getContext("2d");
     fps = new FPSMeter("fpsmeter", document.getElementById("fpscontainer"));
-
-
-  //  InputManager.reset();
 
     game = new Game;
     game.Load();
